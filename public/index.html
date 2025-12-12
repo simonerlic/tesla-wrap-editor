@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tesla Car Wrap Editor</title>
+        <link rel="stylesheet" href="/src/style.css" />
+    </head>
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Minimal Header/Branding -->
+                <div class="header-minimal">
+                    <h1>TESLA WRAP CREATOR</h1>
+                </div>
+
+                <!-- Model Selector -->
+                <div class="model-selector">
+                    <h3 class="section-header">MODEL</h3>
+                    <select id="carModelSelect" aria-label="Select Tesla model">
+                        <option value="">Select a model...</option>
+                        <optgroup label="Model 3">
+                            <option value="model3">Model 3 (Legacy)</option>
+                            <option value="model3-2024">Model 3 2024</option>
+                            <option value="model3-2024-performance">
+                                Model 3 2024 Performance
+                            </option>
+                        </optgroup>
+                        <optgroup label="Model Y">
+                            <option value="modely">Model Y</option>
+                            <option value="modely-l">Model Y L 2025</option>
+                            <option value="modely-2025">Model Y 2025</option>
+                            <option value="modely-2025-premium">
+                                Model Y 2025 Premium
+                            </option>
+                            <option value="modely-2025-performance">
+                                Model Y 2025 Performance
+                            </option>
+                        </optgroup>
+                        <optgroup label="Cybertruck">
+                            <option value="cybertruck">Cybertruck</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- Tools Panel -->
+                <div class="tools-panel">
+                    <h3 class="section-header">TOOLS</h3>
+                    <button id="addImageBtn" aria-label="Add image to canvas">
+                        + Add Image
+                    </button>
+                    <button id="addTextBtn" aria-label="Add text to canvas">
+                        + Add Text
+                    </button>
+                    <input
+                        type="file"
+                        id="imageUpload"
+                        accept="image/*"
+                        style="display: none"
+                    />
+                </div>
+
+                <!-- Zoom Controls -->
+                <div class="zoom-controls">
+                    <h3 class="section-header">VIEW</h3>
+                    <div class="zoom-buttons">
+                        <button id="zoomOutBtn" aria-label="Zoom out">-</button>
+                        <button id="resetViewBtn" aria-label="Reset view">
+                            Reset
+                        </button>
+                        <button id="zoomInBtn" aria-label="Zoom in">+</button>
+                    </div>
+                    <div
+                        class="zoom-display"
+                        id="zoomDisplay"
+                        aria-live="polite"
+                    >
+                        100%
+                    </div>
+                </div>
+
+                <!-- Layers Panel -->
+                <div class="layers-panel">
+                    <h3 class="section-header">LAYERS</h3>
+                    <div id="layersList" aria-label="Layer list"></div>
+                </div>
+
+                <!-- Actions Panel -->
+                <div class="actions-panel">
+                    <button
+                        id="downloadBtn"
+                        class="primary"
+                        disabled
+                        aria-label="Download PNG"
+                    >
+                        ⬇ Download PNG
+                    </button>
+                    <button id="resetBtn" aria-label="Reset editor">
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <canvas id="editorCanvas" aria-label="Design canvas"></canvas>
+                <div class="status-bar" id="statusBar">
+                    Space + Drag to Pan | Mouse Wheel to Zoom
+                </div>
+            </div>
+        </div>
+
+        <!-- Download Success Modal -->
+        <div id="downloadModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <span class="modal-close" id="modalClose">&times;</span>
+                <h2>Download Complete!</h2>
+
+                <h3>HOW TO USE YOUR WRAP</h3>
+                <ol class="instructions">
+                    <li>Save your downloaded PNG to a USB drive</li>
+                    <li>
+                        Create a folder on the USB called <code>Wraps</code>
+                    </li>
+                    <li>
+                        Place your PNG file inside the <code>Wraps</code> folder
+                    </li>
+                    <li>Plug the USB into your Tesla</li>
+                    <li>
+                        Open: <strong>Toybox → Paint Shop → Wraps</strong> tab
+                    </li>
+                    <li>Select your custom wrap and enjoy!</li>
+                </ol>
+
+                <h3>SHARE YOUR CREATION</h3>
+                <p class="share-text">
+                    Show off your design on X and tag
+                    <strong class="twitter-handle">@lossdecay</strong>
+                </p>
+
+                <button id="modalOkBtn" class="primary">Got it!</button>
+            </div>
+        </div>
+
+        <script src="/src/main.js"></script>
+    </body>
+</html>
