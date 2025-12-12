@@ -1,5 +1,0 @@
-name = "tesla-wrapper"
-compatibility_date = "2025-12-12"
-
-[site]
-bucket = "./public"
